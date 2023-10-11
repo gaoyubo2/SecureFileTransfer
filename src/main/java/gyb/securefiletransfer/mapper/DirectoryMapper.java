@@ -2,6 +2,7 @@ package gyb.securefiletransfer.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import gyb.securefiletransfer.entity.Directory;
+import org.mapstruct.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import gyb.securefiletransfer.entity.Directory;
  * @author 郜宇博
  * @since 2023-10-11
  */
+@Mapper
 public interface DirectoryMapper extends BaseMapper<Directory> {
 
 }

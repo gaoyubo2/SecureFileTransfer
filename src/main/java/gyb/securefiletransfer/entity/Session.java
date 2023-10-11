@@ -23,7 +23,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Session对象", description="")
+@ApiModel(value="Session对象")
 public class Session implements Serializable {
 
     @Serial
@@ -32,8 +32,10 @@ public class Session implements Serializable {
     @TableId(value = "session_id", type = IdType.AUTO)
     private Integer sessionId;
 
+    @ApiModelProperty(value = "用户ID")
     private Integer userId;
 
+    @ApiModelProperty(value = "会话Token")
     private String sessionToken;
 
     private String ipAddress;

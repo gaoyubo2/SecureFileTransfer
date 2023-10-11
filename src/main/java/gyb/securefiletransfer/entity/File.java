@@ -23,7 +23,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="File对象", description="")
+@ApiModel(value="File对象")
 public class File implements Serializable {
 
     @Serial

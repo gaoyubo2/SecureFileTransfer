@@ -23,7 +23,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Useractivitylog对象", description="")
+@ApiModel(value="Useractivitylog对象")
 public class Useractivitylog implements Serializable {
 
     @Serial

@@ -23,7 +23,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Directory对象", description="")
+@ApiModel(value="Directory对象")
 public class Directory implements Serializable {
 
     @Serial

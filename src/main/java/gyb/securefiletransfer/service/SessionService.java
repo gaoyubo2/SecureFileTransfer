@@ -2,6 +2,7 @@ package gyb.securefiletransfer.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import gyb.securefiletransfer.entity.Session;
+import gyb.securefiletransfer.entity.User;
 
 /**
  * <p>
@@ -12,5 +13,11 @@ import gyb.securefiletransfer.entity.Session;
  * @since 2023-10-11
  */
 public interface SessionService extends IService<Session> {
+    /**
+     * 开始一段会话
+     * @param user 用户信息
+     * @return 会话信息
+     */
+    Session startSession(User user);
 
 }

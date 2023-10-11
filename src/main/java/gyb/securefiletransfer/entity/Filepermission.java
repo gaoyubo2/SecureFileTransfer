@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Filepermission对象", description="")
+@ApiModel(value="Filepermission对象")
 public class Filepermission implements Serializable {
 
     @Serial
