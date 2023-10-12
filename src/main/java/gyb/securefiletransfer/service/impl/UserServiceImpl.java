@@ -58,6 +58,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private boolean isPasswordValid(String plainPassword, String hashedPassword) {
         // 这里执行密码验证逻辑，比较明文密码和哈希密码是否匹配
         String hashedInput = SecureUtil.md5(plainPassword);
+        System.out.println(hashedInput);
         return hashedInput.equals(hashedPassword);
     }
 

@@ -30,7 +30,7 @@ public class SessionServiceImpl extends ServiceImpl<SessionMapper, Session> impl
         // 创建一个新的会话
         Session session = new Session();
         // 生成JWT令牌
-        String jwtToken = JwtUtil.getJwtToken(user.getUserId().toString(), user.getUsername());
+        String jwtToken = JwtUtil.getJwtToken(user.getUserId(), user.getUsername());
 
         // 设置会话属性
         session.setSessionId(user.getUserId());

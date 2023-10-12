@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: securefile-transfer
+  profiles:
+    active: dev

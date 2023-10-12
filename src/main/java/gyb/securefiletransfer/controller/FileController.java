@@ -1,9 +1,15 @@
 package gyb.securefiletransfer.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.baomidou.mybatisplus.extension.api.R;
+import gyb.securefiletransfer.common.utils.Result;
+import gyb.securefiletransfer.entity.Directory;
+import gyb.securefiletransfer.entity.File;
+import gyb.securefiletransfer.service.FileService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 /**
  * <p>
@@ -16,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/file")
 public class FileController {
+
 
 }
 

@@ -25,7 +25,7 @@ public class JwtUtil {
     /**
      * 生成token字符串
      */
-    public static String getJwtToken(String id, String username) {
+    public static String getJwtToken(Integer id, String username) {
 
         return Jwts.builder()
                 //设置头
@@ -50,14 +50,13 @@ public class JwtUtil {
      * @return token是否有效
      */
     public static boolean checkToken(String jwtToken) {
-        if (jwtToken.isEmpty()) {
-            return false;
+        if (jwtToken == null ||jwtToken.isEmpty()) {
+            throw new MyException(20001,"不存在token或过期token");
         }
         try {
             Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(jwtToken);
         } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+            throw new MyException(20001,"错误的token:"+e.getMessage());
         }
         return true;
     }
@@ -71,13 +70,12 @@ public class JwtUtil {
     public static boolean checkToken(HttpServletRequest request) {
         try {
             String jwtToken = request.getHeader("token");
-            if (jwtToken.isEmpty()) {
-                return false;
+            if (jwtToken == null || jwtToken.isEmpty()) {
+                throw new MyException(20001,"不存在token或过期token");
             }
             Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(jwtToken);
         } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+            throw new MyException(20001,"错误的token:"+e.getMessage());
         }
         return true;
     }
@@ -88,15 +86,15 @@ public class JwtUtil {
      * @param request HttpServletRequest
      * @return userId
      */
-    public static String getMemberIdByJwtToken(HttpServletRequest request) {
+    public static Integer getMemberIdRequest(HttpServletRequest request) {
         String jwtToken = request.getHeader("token");
-        if (jwtToken.isEmpty()) {
-            return "";
+        if (checkToken(request)) {
+            return -1;
         }
-        return getString(jwtToken);
+        return getID(jwtToken);
     }
 
-    private static String getString(String jwtToken) {
+    private static Integer getID(String jwtToken) {
         Jws<Claims> claimsJws;
         try {
             claimsJws = Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(jwtToken);
@@ -104,7 +102,7 @@ public class JwtUtil {
             throw new MyException(20001, "token过期");
         }
         Claims claims = claimsJws.getBody();
-        return (String) claims.get("id");
+        return (Integer) claims.get("id");
     }
 
     /**
@@ -113,11 +111,11 @@ public class JwtUtil {
      * @param jwtToken token
      * @return userId
      */
-    public static String getMemberIdByToken(String jwtToken) {
-        if (jwtToken.isEmpty()) {
-            return "";
+    public static Integer getMemberIdByToken(String jwtToken) {
+        if (checkToken(jwtToken)) {
+            return -1;
         }
-        return getString(jwtToken);
+        return getID(jwtToken);
     }
 
 }

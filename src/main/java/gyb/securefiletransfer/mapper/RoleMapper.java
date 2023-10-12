@@ -2,7 +2,7 @@ package gyb.securefiletransfer.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import gyb.securefiletransfer.entity.Role;
-import org.mapstruct.Mapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>

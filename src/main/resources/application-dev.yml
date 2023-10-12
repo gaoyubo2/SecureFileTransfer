@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/securefiletransfer?useUnicode=true&useSSL=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: gyb20010204
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      stat-view-servlet:
+        login-password: admin
+        login-username: admin
+        enabled: true
+      #配置监控统计拦截的filters,去掉后监控界面sql将无法统计
+      filters: stat
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8

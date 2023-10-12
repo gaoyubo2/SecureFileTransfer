@@ -3,7 +3,7 @@ package gyb.securefiletransfer.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
-import java.io.Serial;
+
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -25,7 +25,7 @@ import lombok.experimental.Accessors;
 @ApiModel(value="Filepermission对象")
 public class Filepermission implements Serializable {
 
-    @Serial
+    
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "权限ID")

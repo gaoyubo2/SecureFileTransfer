@@ -2,7 +2,7 @@ package gyb.securefiletransfer.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 
-import java.io.Serial;
+
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
@@ -26,7 +26,7 @@ import lombok.experimental.Accessors;
 @ApiModel(value="User对象")
 public class User implements Serializable {
 
-    @Serial
+    
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "用户ID")

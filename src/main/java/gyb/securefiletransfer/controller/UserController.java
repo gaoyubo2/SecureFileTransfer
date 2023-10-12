@@ -1,16 +1,13 @@
 package gyb.securefiletransfer.controller;
 
 
+import gyb.securefiletransfer.common.utils.JwtUtil;
 import gyb.securefiletransfer.common.utils.Result;
 import gyb.securefiletransfer.entity.Session;
 import gyb.securefiletransfer.entity.User;
 import gyb.securefiletransfer.service.SessionService;
 import gyb.securefiletransfer.service.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -32,8 +29,10 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Result login(@RequestParam String username, @RequestParam String password) {
-        User user = userService.login(username, password);
+    public Result login(@RequestBody User nameAndPwd) {
+        System.out.println(nameAndPwd);
+        //验证
+        User user = userService.login(nameAndPwd.getUsername(), nameAndPwd.getPassword());
         if (user != null) {
             // 创建会话
             Session session = sessionService.startSession(user);
@@ -42,6 +41,9 @@ public class UserController {
             return Result.error().message("Login failed. Invalid credentials.");
         }
     }
+
+
+    // 其他操作，如文件分享、文件操作日志、文件访问权限等
 
 }
 

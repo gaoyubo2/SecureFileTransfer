@@ -1,16 +1,16 @@
 package gyb.securefiletransfer.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-
-import java.io.Serial;
-import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -26,7 +26,7 @@ import lombok.experimental.Accessors;
 @ApiModel(value="File对象")
 public class File implements Serializable {
 
-    @Serial
+    
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "文件ID")

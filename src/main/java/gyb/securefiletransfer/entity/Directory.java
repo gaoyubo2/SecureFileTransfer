@@ -2,7 +2,7 @@ package gyb.securefiletransfer.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 
-import java.io.Serial;
+
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
@@ -26,7 +26,7 @@ import lombok.experimental.Accessors;
 @ApiModel(value="Directory对象")
 public class Directory implements Serializable {
 
-    @Serial
+    
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "目录结构ID")
@@ -36,8 +36,14 @@ public class Directory implements Serializable {
     @ApiModelProperty(value = "目录结构名称")
     private String directoryName;
 
-    @ApiModelProperty(value = "指向父目录的ID，根目录可以设置为NULL")
-    private Integer parentDirectoryId;
+    @ApiModelProperty(value = "目录路径")
+    private String directoryPath;
+
+    @ApiModelProperty(value = "是否为文件夹")
+    private Boolean isDirectory;
+
+    @ApiModelProperty(value = "指向父目录的名称，根目录可以设置为NULL")
+    private String parentDirectoryName;
 
     @ApiModelProperty(value = "目录的所有者")
     private Integer ownerId;

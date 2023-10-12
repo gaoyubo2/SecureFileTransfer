@@ -3,7 +3,7 @@ package gyb.securefiletransfer.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
-import java.io.Serial;
+
 import java.io.Serializable;
 
 import io.swagger.annotations.ApiModel;
@@ -26,7 +26,7 @@ import lombok.experimental.Accessors;
 @ApiModel(value = "Systemsetting对象")
 public class Systemsetting implements Serializable {
 
-    @Serial
+    
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "setting_id", type = IdType.AUTO)
