@@ -38,7 +38,7 @@ public class GetFilesTest {
                 dir.setDirectoryName(file.getName());
                 dir.setCreatedAt(new Date(file.lastModified()));
                 dir.setOwnerId(1); // 设置所有者ID，可以根据需求设置
-                dir.setParentDirectoryName(parentDirectoryId); // 设置父目录ID
+                //dir.setParentDirectoryName(parentDirectoryId); // 设置父目录ID
 
                 if (file.isDirectory()) {
                     // 如果是目录，递归处理子目录

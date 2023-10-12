@@ -37,13 +37,22 @@ public class File implements Serializable {
     private String fileName;
 
     @ApiModelProperty(value = "文件大小")
-    private Integer size;
+    private Long size;
 
     @ApiModelProperty(value = "存储路径")
     private String storagePath;
 
     @ApiModelProperty(value = "文件拥有者")
     private Integer ownerId;
+
+    @ApiModelProperty(value = "文件是否上传完成")
+    private Boolean isUploaded;
+
+    @ApiModelProperty(value = "文件上传进度")
+    private Long uploadProgress;
+
+    @ApiModelProperty(value = "已上传的块信息")
+    private String uploadedChunks;
 
     @ApiModelProperty(value = "创建时间")
     private Date createdAt;
