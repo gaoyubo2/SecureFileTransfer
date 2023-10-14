@@ -1,4 +1,4 @@
-package gyb.securefiletransfer.common.handler;
+package gyb.securefiletransfer.common.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

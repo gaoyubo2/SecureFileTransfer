@@ -51,5 +51,7 @@ public class Directory implements Serializable {
     @ApiModelProperty(value = "创建时间")
     private Date createdAt;
 
+    @ApiModelProperty(value = "文件大小(文件夹为0)")
+    private Long size;
 
 }

@@ -32,7 +32,6 @@ public class Result {
         Result r = new Result();
         r.setSuccess(true);
         r.setCode(ResultCode.SUCCESS);
-        r.setMessage("成功");
         return r;
     }
 
@@ -41,7 +40,7 @@ public class Result {
         Result r = new Result();
         r.setSuccess(false);
         r.setCode(ResultCode.ERROR);
-        r.setMessage("失败");
+        r.setMessage("执行失败");
         return r;
     }
 

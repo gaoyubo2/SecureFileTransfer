@@ -80,6 +80,21 @@
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 			<version>3.2.0</version>
 		</dependency>
+<!--		fastJson-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.66</version>
+		</dependency>
+<!--		rds-->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
 		<!--        gson-->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>

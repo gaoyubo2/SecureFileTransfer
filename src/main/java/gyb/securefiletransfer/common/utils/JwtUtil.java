@@ -16,7 +16,7 @@ public class JwtUtil {
      * token的过期时间
      */
 
-    public static final long EXPIRE = 1000 * 60 * 60 * 24;
+    public static final long EXPIRE = 1000 * 60 * 60 * 240;
     /**
      * 秘钥
      */
@@ -75,7 +75,7 @@ public class JwtUtil {
             }
             Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(jwtToken);
         } catch (Exception e) {
-            throw new MyException(20001,"错误的token:"+e.getMessage());
+            throw new MyException(20001,"错误的token");
         }
         return true;
     }

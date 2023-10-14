@@ -2,6 +2,10 @@ package gyb.securefiletransfer.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import gyb.securefiletransfer.entity.File;
+import gyb.securefiletransfer.entity.vo.Chunk;
+
+import java.io.IOException;
+import java.util.Map;
 
 /**
  * <p>
@@ -20,16 +24,11 @@ public interface FileService extends IService<File> {
      */
     File initiateFileUpload(String originalFilename, long size, Integer userId);
 
-    /**
-     * 分块上传文件
-     *
-     * @param fileId      文件Id
-     * @param chunkNumber 块索引
-     * @param bytes       文件数据
-     * @param storagePath 存储位置
-     * @return 是否完成上传
-     */
-    //Boolean uploadFilePart(Long fileId, Integer chunkNumber, byte[] bytes, String storagePath);
+    Map<String, Object> checkChunkExits(Chunk chunk);
 
-    Boolean uploadFilePart(Integer fileId, Integer chunkNumber, byte[] bytes, String storagePath);
+    Integer saveChunk(Integer chunkNumber, String identifier);
+
+    void mergeFile(String fileName, String s, String relativePath) throws IOException;
+
+    Integer uploadChunk(Chunk chunk);
 }

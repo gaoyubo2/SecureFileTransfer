@@ -50,7 +50,7 @@ public class DirectoryServiceImpl extends ServiceImpl<DirectoryMapper, Directory
                 }
             }
         }catch (Exception e){
-            throw new MyException(20001,e.getMessage());
+            throw new MyException(20001,"暂无权限");
         }
         return directories;
     }
@@ -98,13 +98,23 @@ public class DirectoryServiceImpl extends ServiceImpl<DirectoryMapper, Directory
         String dirName = split[split.length - 1];
         //排除隐藏文件
         if ("System Volume Information".equals(dirName)||
-                "$RECYCLE.BIN".equals(dirName)){
+                "$RECYCLE.BIN".equals(dirName)||
+                "chunk".equals(dirName)||
+                "Documents and Settings".equals(dirName)||
+                "$Recycle.Bin".equals(dirName)||
+                "PerfLogs".equals(dirName)||
+                "Recovery".equals(dirName)){
             return null;
         }
         directory.setDirectoryName(dirName);
         directory.setDirectoryPath(file.getPath().replace("\\\\","\\"));
+        //directory.setDirectoryPath(file.getPath().replace("\\","//"));
         directory.setParentDirectoryName(directoryName.replace("\\\\","\\"));
         directory.setCreatedAt(new Date(file.lastModified()));
+        //文件则 设置大小
+        if (!directory.getIsDirectory()){
+            directory.setSize(file.length());
+        }
         return directory;
     }
 
