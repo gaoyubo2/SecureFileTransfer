@@ -1,6 +1,21 @@
 package gyb.securefiletransfer.controller;
 
 
+import gyb.securefiletransfer.entity.Directory;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URLEncoder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import gyb.securefiletransfer.common.utils.Result;
 import gyb.securefiletransfer.entity.File;
 import gyb.securefiletransfer.entity.vo.Chunk;
@@ -61,6 +76,26 @@ public class FileController {
             return Result.ok().message("上传文件成功");
         } catch (Exception e) {
             return Result.error().message("暂无权限");
+        }
+    }
+    @GetMapping("/download")
+    public ResponseEntity<Resource> downloadFile(@RequestParam String directoryPath) {
+        try {
+            // 构建文件路径
+            Path path = Paths.get(directoryPath);
+            Resource resource = new UrlResource(path.toUri());
+            String filename = resource.getFilename();
+            //response.addHeader("Content-Disposition", );
+            if (resource.exists() && resource.isReadable()) {
+                return ResponseEntity.ok()
+                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename="+ URLEncoder.encode(filename, "UTF-8"))
+                        .body(resource);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            // 处理 URL 异常
+            return ResponseEntity.badRequest().build();
         }
     }
 }

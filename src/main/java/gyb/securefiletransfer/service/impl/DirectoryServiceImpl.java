@@ -57,9 +57,7 @@ public class DirectoryServiceImpl extends ServiceImpl<DirectoryMapper, Directory
 
     @Override
     public Directory createDirectory(String directoryName, String parentDirectoryPath,Integer userId) {
-
         File newDirectory = new File(parentDirectoryPath, directoryName);
-
         if (!newDirectory.exists()) {
             // 创建文件夹
             boolean created = newDirectory.mkdir();
