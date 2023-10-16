@@ -38,7 +38,6 @@ public class DirectoryController {
     public Result getDirectories(@RequestParam("directoryName") String directoryName){
         List<Directory> directories = directoryService.getDirectories(directoryName);
         if (directories != null){
-            System.out.println(directories);
             return Result.ok().data("directories",directories);
         }
         return Result.error().message("获取系统盘失败");

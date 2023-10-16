@@ -1,6 +1,7 @@
 package gyb.securefiletransfer.controller;
 
 
+import gyb.securefiletransfer.common.handler.exceptionhandler.MyException;
 import gyb.securefiletransfer.entity.Directory;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -85,7 +86,6 @@ public class FileController {
             Path path = Paths.get(directoryPath);
             Resource resource = new UrlResource(path.toUri());
             String filename = resource.getFilename();
-            //response.addHeader("Content-Disposition", );
             if (resource.exists() && resource.isReadable()) {
                 return ResponseEntity.ok()
                         .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename="+ URLEncoder.encode(filename, "UTF-8"))
@@ -95,7 +95,7 @@ public class FileController {
             }
         } catch (Exception e) {
             // 处理 URL 异常
-            return ResponseEntity.badRequest().build();
+            throw new MyException(20001,"下载失败");
         }
     }
 }

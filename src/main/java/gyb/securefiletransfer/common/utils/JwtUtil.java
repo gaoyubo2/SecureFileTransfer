@@ -69,7 +69,7 @@ public class JwtUtil {
      */
     public static boolean checkToken(HttpServletRequest request) {
         try {
-            String jwtToken = request.getHeader("token");
+            String jwtToken = request.getHeader("Token");
             if (jwtToken == null || jwtToken.isEmpty()) {
                 throw new MyException(20001,"不存在token或过期token");
             }
@@ -87,8 +87,8 @@ public class JwtUtil {
      * @return userId
      */
     public static Integer getMemberIdRequest(HttpServletRequest request) {
-        String jwtToken = request.getHeader("token");
-        if (checkToken(request)) {
+        String jwtToken = request.getHeader("Token");
+        if (!checkToken(jwtToken)) {
             return -1;
         }
         return getID(jwtToken);
@@ -112,7 +112,7 @@ public class JwtUtil {
      * @return userId
      */
     public static Integer getMemberIdByToken(String jwtToken) {
-        if (checkToken(jwtToken)) {
+        if (!checkToken(jwtToken)) {
             return -1;
         }
         return getID(jwtToken);

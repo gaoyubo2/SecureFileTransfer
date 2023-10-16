@@ -42,6 +42,9 @@ public class User implements Serializable {
     @ApiModelProperty(value = "用户邮箱")
     private String email;
 
+    @ApiModelProperty(value = "VIP等级")
+    private Integer vip;
+
     @ApiModelProperty(value = "创建时间")
     private Date createdAt;
 
